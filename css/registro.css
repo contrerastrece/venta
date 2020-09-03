@@ -1,0 +1,20 @@
+
+.panel.panel-heading{
+    background: rgba(114, 124, 123, 0.459);
+    /* color: white; */
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    border: none;
+ 
+}
+.panel.panel-body{
+  background: transparent;
+ 
+}
+.panel.panel-danger{
+    background: rgba(0, 0, 0, 0.3);
+    border:2px solid rgba(15, 168, 189, 0.836);
+    border-radius: 10px;
+    
+}

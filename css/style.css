@@ -1,0 +1,28 @@
+body{
+	margin: 0;
+	padding: 0;
+	
+}
+.panel.panel-heading{
+font-size: 19px;
+display: flex;
+align-items: center;
+justify-content: center;
+border: none;
+background: transparent;
+margin-bottom: -25px;
+font-weight: bold;
+}
+.panel.panel-body{
+	background: transparent;
+	border: none;
+	margin: 10px;
+
+}
+
+.panel.panel-primary{
+	background: transparent;
+	border-radius:20px;
+	background: rgba(0, 0,0, 0.5);
+
+}
