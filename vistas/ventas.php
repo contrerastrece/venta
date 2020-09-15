@@ -13,21 +13,23 @@
 <body>
 	<div class="container">
 		<div class="row my-3">
-			<div class="col-sm-12">
-				<ul class="nav nav-pills" role="tablist">
+			<div class="col-md-12">
+				<ul class="nav nav-pills nav-justified" role="tablist" id="pills-tab">
 					<li class="nav-item" role="presentation">
-						<a class="nav-link" id="btnVenderProducto" data-toggle="pill" href="#ventaProducto" role="tab" aria-controls="pills-contact" aria-selected="false">Vender Productos</a>			
+						<a class="nav-link active" id="btnVenderProducto" data-toggle="pill" href="#ventaProducto" role="tab" aria-controls="ventaProducto" aria-selected="true">Vender Productos</a>			
 					</li>
 					<li class="nav-item" role="presentation">
-						<a class="nav-link" id="btnVentaRealizada" data-toggle="pill" href="#ventaRealizada" role="tab" aria-controls="pills-contact" aria-selected="false">Ventas realizadas</a>
+						<a class="nav-link" id="btnVentaRealizada" data-toggle="pill" href="#ventaRealizada" role="tab" aria-controls="ventaRealizada" aria-selected="false">Ventas realizadas</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 		<div class="row"> 
-			<div class="col-sm-12 tab-content" id="pills-tabContent">
-				<div id="ventaProducto" class="tab-pane fade" role="tabpanel" aria-labelledby="btnVenderProducto"></div>
-				<div id="ventaRealizada" class="tab-pane fade" role="tabpanel" aria-labelledby="btnVentaRealizada"></div>
+			<div class="col-md-12">
+				<div class="tab-content" id="pills-tabContent">
+					<div id="ventaProducto" class="tab-pane fade show active" role="tabpanel" aria-labelledby="btnVenderProducto"></div>
+					<div id="ventaRealizada" class="tab-pane fade" role="tabpanel" aria-labelledby="btnVentaRealizada"></div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -36,11 +38,14 @@
 </html>
 <script type="text/javascript">
 	$(document).ready(function(){
+    	$('#ventaProducto').load('venta/ventaProducto.php');
+
 		$('#btnVenderProducto').click(function(){
 			esconderSeccionVenta();
 			$('#ventaProducto').load('venta/ventaProducto.php');
 			$('#ventaProducto').show();
 		});
+		
 		$('#btnVentaRealizada').click(function(){
 			esconderSeccionVenta();
 			$('#ventaRealizada').load('venta/ventaRealizada.php');

@@ -112,13 +112,12 @@
 
 </body>
 </html>
+<!-- script para obtener datos -->
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#tablaClienteLoad').load("cliente/tablaCliente.php");
 
-
-		$('#btnAgregarCliente').click(function(){/*agregar el id de donde ocurrirá el evento del click*/
-			
+		$('#btnAgregarCliente').click(function(){/*agregar el id de donde ocurrirá el evento del click*/			
 			vacios=validarFormVacio('frmCliente');
 
 			//crear un mensaje de alerta
@@ -215,6 +214,7 @@
 			});
 		}
 </script>
+
 <?php 
 	}else {
 		header("location:../index.php");
