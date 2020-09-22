@@ -1,6 +1,9 @@
 <?php
+require_once "../../clases/conexion.php";
     session_start();    
     // print_r($_SESSION['tablaVentaTemp']);
+    $c=new conectar();
+    $conexion=$c->conexion();
     
 ?>
 <style>
@@ -10,9 +13,28 @@
 
 </style>
 
-<div class="row">
-    <div class="h2">Cliente</div>
-    
+<div class="row mb-2">                         
+    <div class="col-md-12 p-0">
+        <div class="input-group">
+            <select class="form-control input-sm" name="clienteVenta" id="clienteVenta">
+                    <option value="A">Selecione Cliente</option>
+                    <option value="0">Publico General</option>
+                    <?php
+                        $sql="SELECT id_cliente, nombre, apellido from clientes"; 
+                        $result=mysqli_query($conexion,$sql);    
+                        while($ver=mysqli_fetch_row($result)):            
+                    ?>              
+                    <option value="<?php echo $ver[0]?>"><?php echo $ver[1]." ".$ver[2]; ?></option>
+                    <?php endwhile; ?>
+            </select>            
+                                            
+            <div class="input-group-append ml-2" >
+                <span class="btn btn-success" onclick="generarVenta()">Generar Venta</span>
+            </div> 
+        </div>                 
+    </div>
+</div>
+<div class="row">   
     <table class="table table-hover responsive table-bordered  display nowrap dataTable_width_auto" cellspacing="0" style="text-align:center" id="tablaVenta">    
         <thead class="thead-dark">
                 <tr>
@@ -25,7 +47,6 @@
                 </tr>   
         </thead>
         <?php
-
                 //    El carácter @ se utiliza para que PHP no devuelva los errores
                 //    si una llamada a una función causa un error en tiempo de ejecución.
                 //    También bloquea los posibles warning.
@@ -39,11 +60,11 @@
                     $datos=explode("||", @$key);
         ?>
             <tr>
-                <td><?php echo $datos[0]; ?></td>
                 <td><?php echo $datos[1]; ?></td>
                 <td><?php echo $datos[2]; ?></td>
                 <td><?php echo $datos[3]; ?></td>
                 <td><?php echo $datos[4]; ?></td>
+                <td>S/ <?php echo $datos[5]; ?></td>
                 <td>
                     <div class="btn-group">
                         <span class="btn btn-warning btn-sm mr-2">
@@ -56,10 +77,20 @@
                 </td>
             </tr>
         <?php
+                $total+=$datos[5];
                 $i++;
             }
             endif;
         ?>
+        <tr class="thead-dark">
+            <th colspan="4">Total venta</th>
+            <th>S/ <?php echo @$total; ?></th>
+            <th>
+                <span class="btn btn-danger btn-sm" onclick="quitar('<?php  ?>')"> 
+                    <span class="bx bx-trash"></span> Limpiar
+                </span>
+            </th>
+        </tr>
     </table>
 
 </div>
@@ -86,4 +117,10 @@
     
     
 
+</script>
+<!-- script para la libreria select -->
+<script>
+	$(document).ready(function(){
+		$('#clienteVenta').select2();
+	});
 </script>

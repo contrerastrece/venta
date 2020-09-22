@@ -26,9 +26,9 @@
     $n_pro=mysqli_fetch_row($result)[0];
     
     // calcular importe
-    $importe="S/ ".$stk*$precio;
+    $importe=$stk*$precio;
 
-    $datos=$n_pro."||".$precio."||".$des."||".$stk."||".$importe;
+    $datos=$id_pro."||".$n_pro."||".$precio."||".$des."||".$stk."||".$importe;
 
     $_SESSION['tablaVentaTemp'][]=$datos;
 

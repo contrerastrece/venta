@@ -145,30 +145,27 @@
         });
     }
 
-</script>
-
-<!-- script para crear venta -->
-<script>
-    function crearVenta(){
+    // funcion para crear venta
+    function generarVenta(){
         $.ajax({
-            url:"../procesos/Venta/creaVenta.php",
-            success:function(r){              
-                if (r>0) {
+			url:"../procesos/Venta/crearVenta.php",
+			success:function(r){
+                alert(r);
+                if(r > 0){
                     $('#tablaVentaTempLoad').load("venta/tablaVentaTemp.php");
                     $('#frmVentaProducto')[0].reset();
-                    alertify.alert("Venta creada");
+                    alertify.alert("Venta agregado");
                 }else if(r==0){
-                    alertify.alert("No hay lista de venta");
+                    alertify.alert("No hay producto en la canasta");
                 }else{
-                    alertify.alert("No se pudo crear la venta");
+                    alertify.error("No se pudo crear venta");
                 }
-            }
-        });
+			}
+		});
     }
-
 </script>
 
-<!-- script para dataTable responsive -->
+<!-- script para la libreria select -->
 <script>
 	$(document).ready(function(){
 		$('#clienteVenta').select2();
