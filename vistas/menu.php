@@ -47,7 +47,6 @@
                 <?php
                   endif;
                 ?>
-
                 
                 <li class="nav-item"> 
                 <a class="nav-link" href="clientes.php">Clientes</a>
